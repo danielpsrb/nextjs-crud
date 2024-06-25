@@ -1,4 +1,4 @@
-import ContactTable from "@/components/ContactTable"
+import CustomerTable from "@/components/CustomerTable"
 import Search from "@/components/Search"
 import { CreateButton } from "@/components/CreateButton"
 
@@ -9,7 +9,7 @@ const Contacts = () => {
                 <Search />
                 <CreateButton />
             </div>
-            <ContactTable />
+            <CustomerTable />
         </div>
     )
 }
