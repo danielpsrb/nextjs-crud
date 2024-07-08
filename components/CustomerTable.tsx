@@ -34,8 +34,8 @@ const CustomerTable = async () => {
                                 {formatDate(customer.createdAt.toString())}
                             </td>
                             <td className="flex justify-center gap-2 py-5">
-                                <EditButton />
-                                <DeleteButton />
+                                <EditButton id={customer.id} />
+                                <DeleteButton id={customer.id} />
                             </td>
                         </tr>
                     ))}
