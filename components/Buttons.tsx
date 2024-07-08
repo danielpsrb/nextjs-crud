@@ -5,15 +5,16 @@ import { FaEdit } from "react-icons/fa"
 import { MdDelete } from "react-icons/md";
 import clsx from "clsx";
 
-export const EditButton = () => {
+
+export const EditButton = ({ id }: { id: string }) => { 
     return (
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded-sm" title="Edit">
+        <Link href={`/customer/edit/${id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded-sm" title="Edit">
             <FaEdit size={20} />
-        </button>
+        </Link>
     )
 }
 
-export const DeleteButton = () => {
+export const DeleteButton = ({ id }: { id: string }) => {
     return (
         <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-sm" title="Delete">
             <MdDelete size={20} />
@@ -33,7 +34,7 @@ export const CreateCustomerButton = ({ label }: { label: string }) => {
 
     return (
         <button type="submit" className={styled} disabled={pending}>
-            {label === "save" ? (
+            {label === "submit" ? (
                 <span>{pending ? "Saving..." : "Submit"}</span>
             ) : (
             <span>{pending ? "Updating..." : "Update"}</span>
