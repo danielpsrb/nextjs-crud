@@ -40,3 +40,48 @@ export const saveCustomer = async (prevSate: any, formData: FormData) => {
     revalidatePath("/customer");
     redirect("/customer");
 };
+
+export const updateCustomer = async (prevSate: any, formData: FormData, id: string) => {
+    const validatedFields = CustomerSchema.safeParse(
+        Object.fromEntries(formData.entries())
+    );
+
+    if(!validatedFields.success) {
+        return {
+            Error: validatedFields.error.flatten().fieldErrors,
+        };
+    }
+
+    try {
+        await prisma.guest.update({
+            where: {
+                id,
+            },
+            data: {
+                name: validatedFields.data.name,
+                email: validatedFields.data.email,
+                address: validatedFields.data.address,
+                city: validatedFields.data.city,
+                phone: validatedFields.data.phone,
+            },
+        });
+    } catch (error) {
+        return {message: "Failed to update customer data. Please try again later."}
+    }
+    revalidatePath("/customer");
+    redirect("/customer");
+}
+
+export const deleteCustomer = async (id: string) => {
+    try {
+        await prisma.guest.delete({
+            where: {
+                id,
+            },
+        });
+    } catch (error) {
+        return {message: "Failed to delete customer data. Please try again later."}
+    }
+    revalidatePath("/customer");
+    redirect("/customer");
+}
