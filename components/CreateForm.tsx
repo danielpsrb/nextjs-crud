@@ -14,18 +14,30 @@ const CreateForm = () => {
                 <div className="mb-5">
                     <label htmlFor="name" className="block text-sm font-medium text-white">Full Name</label>
                     <input type="text" id="name" name="name" autoComplete="name" className="input input-bordered input-primary w-full" />
+                    <div id="name-error" aria-live="polite" aria-atomic="true">
+                        <p className="mt-2 text-sm text-red-500">{state?.Error?.name}</p>
+                    </div>
                 </div>
                 <div className="mb-5">
                     <label htmlFor="name" className="block text-sm font-medium text-white">Email</label>
                     <input type="text" id="email" name="email" autoComplete="email" className="input input-bordered input-primary w-full" />
+                    <div id="name-error" aria-live="polite" aria-atomic="true">
+                        <p className="mt-2 text-sm text-red-500">{state?.Error?.email}</p>
+                    </div>
                 </div>
                 <div className="mb-5">
                     <label htmlFor="name" className="block text-sm font-medium text-white">Address</label>
                     <input type="text" id="address" name="address" autoComplete="address" className="input input-bordered input-primary w-full" />
+                    <div id="name-error" aria-live="polite" aria-atomic="true">
+                        <p className="mt-2 text-sm text-red-500">{state?.Error?.address}</p>
+                    </div>
                 </div>
                 <div className="mb-5">
                     <label htmlFor="name" className="block text-sm font-medium text-white">City</label>
                     <input type="text" id="city" name="city" autoComplete="city" className="input input-bordered input-primary w-full" />
+                    <div id="name-error" aria-live="polite" aria-atomic="true">
+                        <p className="mt-2 text-sm text-red-500">{state?.Error?.city}</p>
+                    </div>
                 </div>
                 <div className="mb-5">
                     <label htmlFor="name" className="block text-sm font-medium text-white">Phone Number</label>
