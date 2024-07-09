@@ -41,7 +41,11 @@ export const saveCustomer = async (prevSate: any, formData: FormData) => {
     redirect("/customer");
 };
 
-export const updateCustomer = async (prevSate: any, formData: FormData, id: string) => {
+export const updateCustomer = async (
+    id: string,
+    prevSate: any,
+    formData: FormData
+    ) => {
     const validatedFields = CustomerSchema.safeParse(
         Object.fromEntries(formData.entries())
     );
@@ -81,7 +85,7 @@ export const deleteCustomer = async (id: string) => {
         });
     } catch (error) {
         return {message: "Failed to delete customer data. Please try again later."}
+        console.log(error)
     }
     revalidatePath("/customer");
-    redirect("/customer");
 }
