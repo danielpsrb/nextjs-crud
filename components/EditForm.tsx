@@ -1,13 +1,14 @@
 "use client"
 
 import { useFormState } from "react-dom"
-import { saveCustomer } from "@/libs/api-service"
+import { updateCustomer } from "@/libs/api-service"
 import { CreateCustomerButton } from "@/components/Buttons"
 import { Guest } from "@prisma/client"
 
 const UpdateForm = ({ customer }: { customer: Guest }) => {
 
-    const [state, formAction] = useFormState(saveCustomer, null)
+    const updateCustomerWithId = updateCustomer.bind(null, customer.id)
+    const [state, formAction] = useFormState(updateCustomerWithId, null)
 
     return (
         <div>
