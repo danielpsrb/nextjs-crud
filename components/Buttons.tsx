@@ -4,6 +4,7 @@ import { useFormStatus } from "react-dom";
 import { FaEdit } from "react-icons/fa"
 import { MdDelete } from "react-icons/md";
 import clsx from "clsx";
+import { deleteCustomer } from "@/libs/api-service";
 
 
 export const EditButton = ({ id }: { id: string }) => { 
@@ -15,10 +16,15 @@ export const EditButton = ({ id }: { id: string }) => {
 }
 
 export const DeleteButton = ({ id }: { id: string }) => {
+
+    const DeletedCustomerWithId = deleteCustomer.bind(null, id);
+
     return (
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-sm" title="Delete">
-            <MdDelete size={20} />
-        </button>
+        <form onSubmit={DeletedCustomerWithId}>
+            <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded-sm" title="Delete">
+                <MdDelete size={20} />
+            </button>
+        </form>
     )
 }
 
@@ -34,8 +40,8 @@ export const CreateCustomerButton = ({ label }: { label: string }) => {
 
     return (
         <button type="submit" className={styled} disabled={pending}>
-            {label === "submit" ? (
-                <span>{pending ? "Saving..." : "Submit"}</span>
+            {label === "save" ? (
+                <span>{pending ? "Saving..." : "Save"}</span>
             ) : (
             <span>{pending ? "Updating..." : "Update"}</span>
         )}
